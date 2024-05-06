@@ -1,0 +1,50 @@
+﻿@model Profile
+@{
+    ViewData["Title"] = "Profile";
+}
+
+
+<div class="row">
+
+    <div class="col-4 offset-4">
+
+        <h1 class="display-4 border-bottom text-center pb-2">@ViewData["Title"]</h1>
+
+    </div>
+</div>
+<div class="row mt-4 col-12">
+    <div class="col-6"><input type="file"</div>
+    <div class="col-6" >
+        <div class="mb-4">
+            <div asp-validation-summary="All" class="text-danger small"></div>
+        </div>
+        
+        <form method="post" asp-action="ProfileChangeFullName">
+          <div class="form-group">
+                <div class="input-group mb-3 ">
+                    <input type="text"  name="FullName" class="form-control text-center " placeholder="Name and Surname" value="@ViewData["Fullname"]" />
+                    <button class="btn btn-secondary" type="submit"><i class="fa-solid fa-file-arrow-down  me-2"></i>Save</button>
+                </div>
+                @if (ViewData["result"] != null && ViewData["result"] == "FullnameUptade")
+                {
+                    <span class="text-success small"> fullnameUptaded</span>
+                }
+          </div>
+
+        </form>
+
+        <form method="post" asp-action="ProfileChangePasword">
+            <div class="form-group">
+                <div class="input-group mb-3 ">
+                    <input type="password" name="password" class="form-control text-center " placeholder="New password" />
+                    <button class="btn btn-secondary" type="submit"><i class="fa-solid fa-file-arrow-down  me-2"></i>Save</button>
+                </div>
+                @if (ViewData["result"] != null && ViewData["result"] == "Paswordchanced")
+                {
+                    <span class="text-success small"> PasswordUptaded</span>
+                }
+            </div>
+
+        </form>
+    </div>
+</div>
